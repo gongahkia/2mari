@@ -1,4 +1,4 @@
-# `2mari`
+# `2mari` 🎧
 
 Text-to-speech web app that respects your time.
 
@@ -20,7 +20,15 @@ $ cd 2mari/src/2mari
 $ 
 ```
 
+## Support
+
+> TODO add here
+
 ## Screenshots
+
+> TODO add more here
+
+## Architecture
 
 > TODO add more here
 
