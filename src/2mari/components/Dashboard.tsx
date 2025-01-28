@@ -73,7 +73,6 @@ export default function Dashboard() {
       }
     }
 
-    // Add event listener for spacebar
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault()
@@ -96,7 +95,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-4">
       <div className="text-center text-xl font-bold">
-        {isTranscribing ? "Press [spacebar] to stop transcribing" : "Stopped transcribing"}
+        {isTranscribing ? "Press [spacebar] twice to stop transcribing" : "Stopped transcribing"}
       </div>
       {error && <div className="text-red-500 font-bold">{error}</div>}
       <div className="grid grid-cols-2 gap-4">

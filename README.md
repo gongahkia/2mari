@@ -17,7 +17,7 @@ You can also build it locally by following the below steps.
 ```console
 $ git clone 
 $ cd 2mari/src/2mari
-$ 
+$ npm run dev
 ```
 
 ## Support

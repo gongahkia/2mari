@@ -3,7 +3,18 @@ x (A) consider the alternative of vosk: this is an offline open-source speech re
 x (A) consider the alternative of mozilla deepspeech: an open-source speech-to-text engine that can be used without an api key, it's highly customizable and can be trained on specific datasets.
 x (A) consider the alternative of openai whisper: while it's primarily designed for offline use, whisper is a powerful open-source model that provides high accuracy and resilience to background noise, you can implement it in your application without needing an api key.
 
-(A) continue existing chat with v0 under 2mari webapp requirements and ask it to retain all other transcription and logic, just remove the mechanism to stop transcription entirely and that it will just continue to endlessly transcribe user text until a specified token limit that is specified by me (eg. 1000 words)
+(A) continue existing chat with v0 under 2mari webapp requirements 
+(A) right now if i press spacebar twice, it stops transcribing, ask v0 why this is and ask it to explain the error, either fix the bug or choose the below todo as a way to bypass this issue
+(A) or consider placing the below within next.config.ts to just silence console errors outright
+
+const nextConfig = {
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
+  },
+};
+module.exports = nextConfig;
+
+(A) ask v0 to retain all other transcription and logic, just remove the mechanism to stop transcription entirely and that it will just continue to endlessly transcribe user text until a specified token limit that is specified by me (eg. 1000 words)
 
 (A) add detailed logic and more specific santisaion operations under sanitise.ts where it indiscriminately removes all content after or in between a predetermined but extensive list of fluff words, then it outputs the remaining words left (rule-based reduction first) this is done by default
 (A) continue existing chat with v0 under 2mari webapp requirements and continue adding features per the rules to automatically simplify first, then the subsequent logic for word2vec simplfications 
