@@ -1,0 +1,15 @@
+(A) workflow is that it takes in a sound and perform speech to text analysis, then it cleans up the text and performs a set of santisaion operations where it indiscriminately removes all content after or in between a predetermined but extensive list of fluff words, then it outputs the remaining words left (rule-based reduction first) this is done by default
+(A) also allow users to input a paragraph instead if they dont want to use the tts option, 
+(A) add another button below called "simplify." that users can repeatedly click, and it repeatedly simplifies what has been said 
+(A) implement the simplification with word2vec embeddings and the below simplfication algorithm
+(A) tokenize the input text into words;; for each word, find its closest neighbors in the word2vec space;; replace the word with its simplest neighbor (determined by word frequency or a pre-defined list of simple words) ;; repeat this process for each click of the "simplify" button and also handle sentence structure with rule-based reduction (can ask gpt what available rule-based ways there are to simplify senntence structure semantically and gramatically correctly eg. remove surbodinate clauses) and add a stopping condition
+(A) if the word2vec doesn't work, then handle it through API calls 
+(A) add a gui visualisation similar to a git graph reflecting the gradual simplification of teh text from the original to the final text
+(A) use web speech api for real-time transcription using the speechrecognition interface since it doesn't require external services or any api key
+(A) consider the alternative of vosk: this is an offline open-source speech recognition toolkit that doesn't require an api key, it supports multiple languages and can be used for continuous large vocabulary transcription.
+(A) consider the alternative of mozilla deepspeech: an open-source speech-to-text engine that can be used without an api key, it's highly customizable and can be trained on specific datasets.
+(A) consider the alternative of openai whisper: while it's primarily designed for offline use, whisper is a powerful open-source model that provides high accuracy and resilience to background noise, you can implement it in your application without needing an api key.
+
+(B) actually deploy the site as a usable webapp to vercel
+(B) include an architecture diagram in the readme.md
+(B) make the readme.md more detailed and include a legal disclaimer as required
