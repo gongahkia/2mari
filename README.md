@@ -1,3 +1,5 @@
+> TODO add build tag here
+
 # `2mari` 🎧
 
 Text-to-speech web app that respects your time.
@@ -6,13 +8,17 @@ Text-to-speech web app that respects your time.
 
 > TODO add more here
 
+## Screenshots
+
+> TODO add more here
+
 ## Usage
 
-Access the live [`2mari`]() web app at [insert link here]().
+Access the live [`2mari`](https://github.com/gongahkia/2mari) web app at [https://2mari.vercel.app/](https://2mari.vercel.app/).
 
 > TODO add more details above.
 
-You can also build it locally by following the below steps.
+You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by following the below steps.
 
 ```console
 $ git clone 
@@ -24,13 +30,13 @@ $ npm run dev
 
 > TODO add here
 
-## Screenshots
-
-> TODO add more here
-
 ## Architecture
 
 > TODO add more here
+
+## Disclaimer
+
+> TODO add legal disclaimer here
 
 ## Reference
 

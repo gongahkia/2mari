@@ -2,7 +2,7 @@
 
 export function sanitizeText(text: string): string {
   const rules = [
-    { pattern: /\bfoo\b/gi, replacement: "bar" },
+    { pattern: /\bfool\b/gi, replacement: "dumbass" },
     { pattern: /\bhello\b/gi, replacement: "hi" },
     { pattern: /\bworld\b/gi, replacement: "earth" },
   ]
