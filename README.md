@@ -8,6 +8,8 @@ Made with React, Tailwind CSS and Next.Js.
 
 Here's [why](#why).
 
+## Screenshot
+
 ![](./asset/reference/jank.png)
 
 ## Usage
