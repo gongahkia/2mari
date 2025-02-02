@@ -6,7 +6,7 @@ Text-to-speech that <del>basically</del> respects your <del>uh</del> time.
 
 Translates [yappanese](https://www.urbandictionary.com/define.php?term=yappanese) back to english.
 
-I built `2mari` off a [smaller project]() I worked on back in late 2023.
+Here's [why](#why).
 
 ## Screenshots
 
@@ -35,6 +35,12 @@ You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by foll
 ## Disclaimer
 
 > TODO add legal disclaimer here
+
+## Why?
+
+I previously built a similar project called [`Keep talking bro`](https://github.com/gongahkia/the-sandbox/tree/main/javascript/keepTalkingBro) in 2023 that added filler words to provided text.   
+
+Since then *(and having entered University)*, I wondered if it would be possible to achieve the opposite, a TTS service that simplified verbose text.
 
 ## Reference
 
