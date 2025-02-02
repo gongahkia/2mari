@@ -11,6 +11,8 @@ x (A) or consider placing the below within next.config.ts to just silence consol
 (A) implement the simplification with word2vec embeddings and the below simplfication algorithm in another file called "simplify.ts"
 (A) tokenize the input text into words;; for each word, find its closest neighbors in the word2vec space;; replace the word with its simplest neighbor (determined by word frequency or a pre-defined list of simple words) ;; repeat this process for each click of the "simplify" button and also handle sentence structure with rule-based reduction (can ask gpt what available rule-based ways there are to simplify senntence structure semantically and gramatically correctly eg. remove surbodinate clauses) and add a stopping condition
 (A) if the word2vec doesn't work, then handle it through API calls 
+(A) consider adding a copy button below the summarised text
+(A) add another text-to-speech that reads out the finalised content 
 
 (A) add a gui visualisation similar to a git graph reflecting the gradual simplification of teh text from the original to the final text
 (A) also allow users to input a paragraph instead if they dont want to use the tts option

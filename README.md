@@ -2,7 +2,11 @@
 
 # `2mari` 🎧
 
-Text-to-speech web app that respects your time.
+Text-to-speech that <del>basically</del> respects your <del>uh</del> time.
+
+Translates [yappanese](https://www.urbandictionary.com/define.php?term=yappanese) back to english.
+
+I built `2mari` off a [smaller project]() I worked on back in late 2023.
 
 ## Screenshots
 
