@@ -28,7 +28,7 @@ $ npm run dev
 
 ## Support
 
-> TODO add here
+> TODO add a table here showing supported browsers.
 
 ## Architecture
 
