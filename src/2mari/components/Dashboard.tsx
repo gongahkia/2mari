@@ -14,6 +14,7 @@ export default function Dashboard() {
   const [sanitizedText, setSanitizedText] = useState("")
   const [error, setError] = useState<string | null>(null)
   const recognitionRef = useRef<any>(null)
+  const interimTranscriptRef = useRef("")
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,8 +25,8 @@ export default function Dashboard() {
         recognitionRef.current.interimResults = true
 
         recognitionRef.current.onresult = (event: any) => {
-          let interimTranscript = ""
           let finalTranscript = ""
+          let interimTranscript = ""
 
           for (let i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
@@ -36,8 +37,10 @@ export default function Dashboard() {
           }
 
           setTranscript((prevTranscript) => {
-            const newTranscript = prevTranscript + finalTranscript + interimTranscript
-            setSanitizedText(sanitizeText(newTranscript))
+            const newTranscript = prevTranscript + finalTranscript
+            interimTranscriptRef.current = interimTranscript
+            const fullTranscript = newTranscript + interimTranscript
+            setSanitizedText(sanitizeText(fullTranscript))
             return newTranscript
           })
         }
@@ -47,17 +50,20 @@ export default function Dashboard() {
         }
 
         recognitionRef.current.onend = () => {
-          recognitionRef.current.start()
+          try {
+            recognitionRef.current.start()
+          } catch (error) {
+            console.error("Failed to restart speech recognition:", error)
+          }
         }
 
-        // Start recognition immediately
-        recognitionRef.current.start()
+        // Start transcribing immediately
+        startTranscribing()
       } else {
         setError("Speech recognition is not supported in this browser.")
       }
     }
 
-    // Cleanup function
     return () => {
       if (recognitionRef.current) {
         recognitionRef.current.stop()
@@ -65,13 +71,36 @@ export default function Dashboard() {
     }
   }, [])
 
+  const startTranscribing = async () => {
+    setError(null)
+    if (recognitionRef.current) {
+      try {
+        // Request microphone permission
+        await navigator.mediaDevices.getUserMedia({ audio: true })
+
+        setTranscript("")
+        setSanitizedText("")
+        interimTranscriptRef.current = ""
+        recognitionRef.current.start()
+      } catch (err) {
+        console.error("Failed to start speech recognition:", err)
+        setError("Failed to start speech recognition. Please ensure microphone access is allowed.")
+      }
+    } else {
+      setError("Speech recognition is not initialized.")
+    }
+  }
+
   return (
     <div className="space-y-4">
-      {error && <div className="text-red-500 font-bold">{error}</div>}
+      {error && <div className="text-red-500 font-bold text-center">{error}</div>}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <h2 className="text-xl font-semibold mb-2">Original Transcript</h2>
-          <p className="p-2 bg-gray-100 rounded min-h-[100px] whitespace-pre-wrap">{transcript}</p>
+          <p className="p-2 bg-gray-100 rounded min-h-[100px] whitespace-pre-wrap">
+            {transcript}
+            {interimTranscriptRef.current}
+          </p>
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-2">Sanitized Text</h2>
