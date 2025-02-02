@@ -4,10 +4,6 @@
 
 Text-to-speech web app that respects your time.
 
-## Rationale
-
-> TODO add more here
-
 ## Screenshots
 
 > TODO add more here
@@ -27,6 +23,10 @@ You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by foll
 ## Architecture
 
 > TODO add more here
+
+```mermaid
+
+```
 
 ## Disclaimer
 
