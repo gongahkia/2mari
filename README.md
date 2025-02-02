@@ -6,6 +6,8 @@ Text-to-speech that <del>basically</del> respects your <del>uh</del> time.
 
 Translates [yappanese](https://www.urbandictionary.com/define.php?term=yappanese) back to english.
 
+Made with React, Tailwind CSS and Next.Js.
+
 Here's [why](#why).
 
 ## Screenshots
@@ -14,11 +16,16 @@ Here's [why](#why).
 
 ## Usage
 
-Access the live [`2mari`](https://github.com/gongahkia/2mari) web app at [https://2mari-live.vercel.app/](https://2mari-live.vercel.app/).
+Build [`2mari`] locally.
 
-You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by following [these steps](./src/README.md).
-
-> TODO add more details above.
+```console
+$ git clone https://github.com/gongahkia/2mari
+$ cd src/2mari
+$ npm install word2vec-node
+$ npm install next@latest react@latest react-dom@latest
+$ npx shadcn@latest add button 
+$ npm run dev
+```
 
 ## Support
 
