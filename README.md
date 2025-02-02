@@ -14,17 +14,11 @@ Text-to-speech web app that respects your time.
 
 ## Usage
 
-Access the live [`2mari`](https://github.com/gongahkia/2mari) web app at [https://2mari.vercel.app/](https://2mari.vercel.app/).
+Access the live [`2mari`](https://github.com/gongahkia/2mari) web app at [https://2mari-live.vercel.app/](https://2mari-live.vercel.app/).
+
+You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by following [these steps](./src/README.md).
 
 > TODO add more details above.
-
-You can also build [`2mari`](https://github.com/gongahkia/2mari) locally by following the below steps.
-
-```console
-$ git clone 
-$ cd 2mari/src/2mari
-$ npm run dev
-```
 
 ## Support
 
