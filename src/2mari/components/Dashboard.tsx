@@ -113,7 +113,7 @@ export default function Dashboard() {
       </div>
       {analysis && (
         <div className="mt-4">
-          <h2 className="text-xl font-semibold mb-2">Word2Vec Analysis</h2>
+          <h2 className="text-xl font-semibold mb-2">Sentiment analysis (probably inaccurate)</h2>
           <div className="p-2 bg-gray-100 rounded">
             <p>
               <strong>General Topic:</strong> {analysis.topic}
