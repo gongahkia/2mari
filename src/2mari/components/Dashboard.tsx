@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { sanitizeText } from "../utils/sanitize"
+import { Button } from "@/components/ui/button"
 
 declare global {
   interface Window {
@@ -10,7 +11,7 @@ declare global {
 }
 
 export default function Dashboard() {
-  const [isTranscribing, setIsTranscribing] = useState(true)
+  const [isTranscribing, setIsTranscribing] = useState(false)
   const [transcript, setTranscript] = useState("")
   const [sanitizedText, setSanitizedText] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -60,44 +61,65 @@ export default function Dashboard() {
             }
           }
         }
-
-        // Start transcribing immediately
-        try {
-          recognitionRef.current.start()
-        } catch (error) {
-          console.error("Failed to start speech recognition:", error)
-          setError("Failed to start speech recognition. Please refresh the page.")
-        }
       } else {
         setError("Speech recognition is not supported in this browser.")
       }
     }
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        event.preventDefault()
-        setIsTranscribing(false)
-        if (recognitionRef.current) {
-          recognitionRef.current.stop()
-        }
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown)
-
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
       if (recognitionRef.current) {
         recognitionRef.current.stop()
       }
     }
   }, [isTranscribing])
 
+  const startTranscribing = async () => {
+    setError(null)
+    if (recognitionRef.current) {
+      try {
+        // Request microphone permission
+        await navigator.mediaDevices.getUserMedia({ audio: true })
+
+        setTranscript("")
+        setSanitizedText("")
+        interimTranscriptRef.current = ""
+        recognitionRef.current.start()
+        setIsTranscribing(true)
+      } catch (err) {
+        console.error("Failed to start speech recognition:", err)
+        setError("Failed to start speech recognition. Please ensure microphone access is allowed.")
+      }
+    } else {
+      setError("Speech recognition is not initialized.")
+    }
+  }
+
+  const stopTranscribing = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop()
+      setIsTranscribing(false)
+    }
+  }
+
   return (
     <div className="space-y-4">
-      <div className="text-center text-xl font-bold">
-        {isTranscribing ? "Press [spacebar] twice to stop transcribing" : "Stopped transcribing"}
+      <div className="flex justify-center space-x-4">
+        <Button
+          onClick={startTranscribing}
+          disabled={isTranscribing}
+          className="bg-green-500 hover:bg-green-600 text-white"
+        >
+          Start Transcribing
+        </Button>
+        <Button
+          onClick={stopTranscribing}
+          disabled={!isTranscribing}
+          className="bg-red-500 hover:bg-red-600 text-white"
+        >
+          Stop Transcribing
+        </Button>
       </div>
-      {error && <div className="text-red-500 font-bold">{error}</div>}
+      {error && <div className="text-red-500 font-bold text-center">{error}</div>}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <h2 className="text-xl font-semibold mb-2">Original Transcript</h2>
