@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { sanitizeText } from "../utils/sanitize"
+import { analyzeText } from "../utils/word2vec"
 
 declare global {
   interface Window {
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const [transcript, setTranscript] = useState("")
   const [sanitizedText, setSanitizedText] = useState("")
   const [error, setError] = useState<string | null>(null)
+  const [analysis, setAnalysis] = useState<{ topic: string; emotion: string } | null>(null)
   const recognitionRef = useRef<any>(null)
   const interimTranscriptRef = useRef("")
 
@@ -41,6 +43,7 @@ export default function Dashboard() {
             interimTranscriptRef.current = interimTranscript
             const fullTranscript = newTranscript + interimTranscript
             setSanitizedText(sanitizeText(fullTranscript))
+            setAnalysis(analyzeText(fullTranscript))
             return newTranscript
           })
         }
@@ -80,6 +83,7 @@ export default function Dashboard() {
 
         setTranscript("")
         setSanitizedText("")
+        setAnalysis(null)
         interimTranscriptRef.current = ""
         recognitionRef.current.start()
       } catch (err) {
@@ -107,6 +111,19 @@ export default function Dashboard() {
           <p className="p-2 bg-gray-100 rounded min-h-[100px] whitespace-pre-wrap">{sanitizedText}</p>
         </div>
       </div>
+      {analysis && (
+        <div className="mt-4">
+          <h2 className="text-xl font-semibold mb-2">Word2Vec Analysis</h2>
+          <div className="p-2 bg-gray-100 rounded">
+            <p>
+              <strong>General Topic:</strong> {analysis.topic}
+            </p>
+            <p>
+              <strong>General Emotion:</strong> {analysis.emotion}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -4,12 +4,11 @@ x (A) consider the alternative of mozilla deepspeech: an open-source speech-to-t
 x (A) consider the alternative of openai whisper: while it's primarily designed for offline use, whisper is a powerful open-source model that provides high accuracy and resilience to background noise, you can implement it in your application without needing an api key.
 x (A) or consider placing the below within next.config.ts to just silence console errors outright
 x (A) add detailed logic and more specific santisaion operations under sanitise.ts where it indiscriminately removes all content after or in between a predetermined but extensive list of fluff words, then it outputs the remaining words left (rule-based reduction first) this is done by default
+x (A) tokenize the input text into words;; for each word, find its closest neighbors in the word2vec space;; replace the word with its simplest neighbor (determined by word frequency or a pre-defined list of simple words) ;; repeat this process for each click of the "simplify" button and also handle sentence structure with rule-based reduction (can ask gpt what available rule-based ways there are to simplify senntence structure semantically and gramatically correctly eg. remove surbodinate clauses) and add a stopping condition
+x (A) automate the word2vec embeedings within another file annd have them render the details of the other 4 boxes similar to the existing sanitised text
+x (A) implement the simplification with word2vec embeddings and the below simplfication algorithm in another file called "simplify.ts"
+x (A) if the word2vec doesn't work, then handle it through API calls 
 
-(A) then ask v0 to add boxes underneath the first 2 that show simplified text and even more simplified text and then a bottom left box that states "general topic" and a bottom right box that states "general emotion"
-(A) automate the word2vec embeedings within another file annd have them render the details of the other 4 boxes similar to the existing sanitised text
-(A) implement the simplification with word2vec embeddings and the below simplfication algorithm in another file called "simplify.ts"
-(A) tokenize the input text into words;; for each word, find its closest neighbors in the word2vec space;; replace the word with its simplest neighbor (determined by word frequency or a pre-defined list of simple words) ;; repeat this process for each click of the "simplify" button and also handle sentence structure with rule-based reduction (can ask gpt what available rule-based ways there are to simplify senntence structure semantically and gramatically correctly eg. remove surbodinate clauses) and add a stopping condition
-(A) if the word2vec doesn't work, then handle it through API calls 
 (A) consider adding a copy button below the summarised text
 (A) add another text-to-speech that reads out the finalised content 
 
