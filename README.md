@@ -25,6 +25,9 @@ $ npm run dev
 
 ## Support
 
+> [!IMPORTANT]  
+> Support for niche browsers like Opera, Vivaldi have not been extensively tested. [Open an issue](https://github.com/gongahkia/skill-hunter/issues) for further support.  
+
 `2mari` is currently supported on the following browsers.
 
 | Browser | Status | 
@@ -35,13 +38,18 @@ $ npm run dev
 | [Firefox](https://www.mozilla.org/en-US/firefox/new/) *(Version 49 onwards)* | ![](https://img.shields.io/badge/Status-Partial-orange) | 
 | [Internet Explorer](https://support.microsoft.com/en-us/windows/internet-explorer-downloads-d49e1f0d-571c-9a7b-d97e-be248806ca70) | ![](https://img.shields.io/badge/Status-Unsupported-red) | 
 
-> [!IMPORTANT]  
-> Support for niche browsers like Opera, Vivaldi have not been extensively tested. [Open an issue](https://github.com/gongahkia/skill-hunter/issues) for further support.  
-
 ## Architecture
 
 ```mermaid
-
+graph LR
+    A[TTS Transcript] -->|Preprocessing| B[Remove Filler Words]
+    A -->|Analysis| D[Perform Sentiment Analysis]
+    B -->|Refinement| E[Replace Words using Word2Vec]
+    D -->|Output| E[Final Processed Text]
+    subgraph 2mari
+        B
+        D
+    end
 ```
 
 ## Why?
