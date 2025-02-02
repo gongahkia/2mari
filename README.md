@@ -28,7 +28,7 @@ $ npm run dev
 ## Support
 
 > [!IMPORTANT]  
-> Support for niche browsers like Opera, Vivaldi have not been extensively tested. [Open an issue](https://github.com/gongahkia/skill-hunter/issues) for further support.  
+> Support for niche browsers like Opera, Vivaldi have not been extensively tested. [Open an issue](https://github.com/gongahkia/2mari/issues) for further support.  
 
 `2mari` is currently supported on the following browsers.
 
