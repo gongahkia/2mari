@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { sanitizeText } from "../utils/sanitize"
-import { analyzeText } from "../utils/word2vec"
+import { analyzeText } from "../utils/naiveWord2Vec"
 import { Button } from "@/components/ui/button"
 import { ClipboardCopy } from "lucide-react"
 

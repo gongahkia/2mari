@@ -63,16 +63,12 @@ const emotionKeywords: { [key: string]: string[] } = {
 };
 
 export function analyzeText(text: string): AnalysisResult {
-  const words = text.toLowerCase().split(/\s+/);
-  const topicScores = topics.reduce((scores, topic) => {
-    scores[topic] = (topicKeywords[topic] || []).filter(keyword => words.includes(keyword)).length;
-    return scores;
-  }, {} as { [key: string]: number });
-  const emotionScores = emotions.reduce((scores, emotion) => {
-    scores[emotion] = (emotionKeywords[emotion] || []).filter(keyword => words.includes(keyword)).length;
-    return scores;
-  }, {} as { [key: string]: number });
-  const topic = Object.entries(topicScores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
-  const emotion = Object.entries(emotionScores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+  const now = new Date();
+  const seed = now.getSeconds(); 
+  function seededRandom(seed: number, max: number) {
+    return Math.floor((Math.sin(seed) * 10000) % max);
+  }
+  const topic = topics[seededRandom(seed, topics.length)];
+  const emotion = emotions[seededRandom(seed + 10, emotions.length)]; 
   return { topic, emotion };
 }
