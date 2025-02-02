@@ -1,10 +1,8 @@
-> TODO add build tag here
+[![](https://img.shields.io/badge/2mari_1.0.0-passing-green)](https://github.com/gongahkia/2mari/releases/tag/1.0.0) 
 
 # `2mari` 🎧
 
-Text-to-speech that <del>basically</del> respects your <del>uh</del> time.
-
-Translates [yappanese](https://www.urbandictionary.com/define.php?term=yappanese) back to english.
+Text-to-speech that <del>basically</del> respects your time by translating [yappanese](https://www.urbandictionary.com/define.php?term=yappanese) back to english.
 
 Made with React, Tailwind CSS and Next.Js.
 
@@ -12,7 +10,7 @@ Here's [why](#why).
 
 ## Screenshots
 
-> TODO add more here
+![](./asset/reference/use.png)
 
 ## Usage
 

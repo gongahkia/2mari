@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import { sanitizeText } from "../utils/sanitize"
-import { analyzeText } from "../utils/naiveWord2Vec"
+import { analyzeText } from "../utils/word2vec"
+import { Button } from "@/components/ui/button"
+import { ClipboardCopy } from "lucide-react"
 
 declare global {
   interface Window {
@@ -15,6 +17,7 @@ export default function Dashboard() {
   const [sanitizedText, setSanitizedText] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [analysis, setAnalysis] = useState<{ topic: string; emotion: string } | null>(null)
+  const [copySuccess, setCopySuccess] = useState(false)
   const recognitionRef = useRef<any>(null)
   const interimTranscriptRef = useRef("")
 
@@ -95,6 +98,17 @@ export default function Dashboard() {
     }
   }
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(sanitizedText)
+      setCopySuccess(true)
+      setTimeout(() => setCopySuccess(false), 2000) // Reset success message after 2 seconds
+    } catch (err) {
+      console.error("Failed to copy text: ", err)
+      setError("Failed to copy text to clipboard.")
+    }
+  }
+
   return (
     <div className="space-y-4">
       {error && <div className="text-red-500 font-bold text-center">{error}</div>}
@@ -109,11 +123,18 @@ export default function Dashboard() {
         <div>
           <h2 className="text-xl font-semibold mb-2">Sanitized Text</h2>
           <p className="p-2 bg-gray-100 rounded min-h-[100px] whitespace-pre-wrap">{sanitizedText}</p>
+          <div className="mt-2 flex items-center">
+            <Button onClick={copyToClipboard} className="flex items-center space-x-2" variant="outline">
+              <ClipboardCopy className="h-4 w-4" />
+              <span>Copy Sanitized Text</span>
+            </Button>
+            {copySuccess && <span className="ml-2 text-green-600">Copied to clipboard!</span>}
+          </div>
         </div>
       </div>
       {analysis && (
         <div className="mt-4">
-          <h2 className="text-xl font-semibold mb-2">Sentiment analysis (probably inaccurate)</h2>
+          <h2 className="text-xl font-semibold mb-2">Sentiment analysis</h2>
           <div className="p-2 bg-gray-100 rounded">
             <p>
               <strong>General Topic:</strong> {analysis.topic}

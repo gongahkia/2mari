@@ -8,14 +8,11 @@ x (A) tokenize the input text into words;; for each word, find its closest neigh
 x (A) automate the word2vec embeedings within another file annd have them render the details of the other 4 boxes similar to the existing sanitised text
 x (A) implement the simplification with word2vec embeddings and the below simplfication algorithm in another file called "simplify.ts"
 x (A) if the word2vec doesn't work, then handle it through API calls 
-
-(A) consider adding a copy button below the summarised text
-(A) add another text-to-speech that reads out the finalised content 
-
-(A) add a gui visualisation similar to a git graph reflecting the gradual simplification of teh text from the original to the final text
-(A) also allow users to input a paragraph instead if they dont want to use the tts option
-
-(B) actually deploy the site as a usable webapp to vercel
-(B) include an architecture diagram in the readme.md
-(B) make the readme.md more detailed and include a legal disclaimer as required
-(B) specify that only some browsers are currently supported like chrome and microsoft edge due to the existence of the web speech API
+x (A) consider adding a copy button below the summarised text
+x (A) add another text-to-speech that reads out the finalised content 
+x (A) add a gui visualisation similar to a git graph reflecting the gradual simplification of teh text from the original to the final text
+x (A) also allow users to input a paragraph instead if they dont want to use the tts option
+x (B) actually deploy the site as a usable webapp to vercel
+x (B) include an architecture diagram in the readme.md
+x (B) make the readme.md more detailed and include a legal disclaimer as required
+x (B) specify that only some browsers are currently supported like chrome and microsoft edge due to the existence of the web speech API
